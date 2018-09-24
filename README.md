@@ -56,10 +56,10 @@ Use Nvidia GPU:
 ```shell
 sudo prime-select nvidia
 ```
-## BATTERY SAVE
-### INSTALL TLP
-Fonte: [Blog do Edivaldo](https://www.edivaldobrito.com.br/tlp-no-ubuntu/)
-Fonte: [TLP](https://linrunner.de/en/tlp/tlp.html)
+## BATTERY SAVE (LAPTOP)
+### INSTALL TLP – Linux Advanced Power Management
+Fonte: [Blog do Edivaldo](https://www.edivaldobrito.com.br/tlp-no-ubuntu/)   
+Fonte: [TLP](https://linrunner.de/en/tlp/tlp.html)   
 ```shell
 sudo apt-get purge laptop-mode-tools
 sudo add-apt-repository ppa:linrunner/tlp

@@ -27,7 +27,7 @@ sudo apt-get update
 sudo apt install nvidia-driver-396
 ```
 
-### REMOVE TEARING
+### REMOVE TEARING (NVIDIA)
 Fonte: [Diolinux](https://www.diolinux.com.br/2018/07/como-resolver-o-problema-de-screen.html)
 ```shell
 sudo gedit /etc/modprobe.d/nvidia-drm-nomodeset.conf

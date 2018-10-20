@@ -24,9 +24,8 @@ Save the file and reboot.
 sudo apt-get purge nvidia*
 sudo add-apt-repository ppa:graphics-drivers
 sudo apt-get update
-sudo apt install nvidia-driver-396
+sudo ubuntu-drivers autoinstall
 ```
-
 ### REMOVE TEARING (NVIDIA)
 Fonte: [Diolinux](https://www.diolinux.com.br/2018/07/como-resolver-o-problema-de-screen.html)
 ```shell
@@ -56,6 +55,14 @@ Use Nvidia GPU:
 ```shell
 sudo prime-select nvidia
 ```
+### PROBLEMA NO SOM APÓS ATUALIZAÇÃO DO DRIVER
+Após a atualização do driver de video, o Linux Mint começou a direcionar o audio para o HDMI, mas a central de som do Mint não identificava isso. Para resolver, foi necessario instalar o app **pavucontrol**.
+```shell
+sudo apt-get install pavucontrol
+pavucontrol
+```
+Ao acessar, mudar a saida de audio do HDMI. Ao mudar, ele indetificará que não esta plugado e resolverá o problema.
+
 ## BATTERY SAVE (LAPTOP)
 ### INSTALL TLP – Linux Advanced Power Management
 Fonte: [Blog do Edivaldo](https://www.edivaldobrito.com.br/tlp-no-ubuntu/)   

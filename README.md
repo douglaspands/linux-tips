@@ -74,3 +74,7 @@ sudo apt-get update
 sudo apt-get install tlp tlp-rdw
 sudo tlp start
 ```
+## REMOVER PACOTE SEM REMOVER AS DEPENDENCIAS
+```shell
+dpkg -P --force-depends foo
+```

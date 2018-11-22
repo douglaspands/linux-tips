@@ -197,6 +197,7 @@
   ```
   As demais fontes, alterar pelo app `GNOME Tweak Tool`.
   ### Extensões Gnome
+  As extensões Gnome tambem estão disponiveis na loja de aplicativos do Ubuntu (eu aconselho instalar por ela).
   #### No Title Bar
   Remove a barra da janela e inclui os botões de minimar, mazimizar e fechar na barra de status
   #### Status Area Horizontal Spacing

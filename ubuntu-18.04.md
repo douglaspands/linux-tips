@@ -1,5 +1,4 @@
   # UBUNTU 18.04 LTS
-  ___
   ## SOFTWARE
   ### Desinstalar aplicativo sem remover dependencias
   ```shell

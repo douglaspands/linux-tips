@@ -29,8 +29,6 @@
   ```
   Substituir **errors=remount-ro** por **discard,noatime,errors=remount-ro**.    
   Salvar e reiniciar o computador.
-  ### Subir Segundo Disco no Boot
-  [Como inicializar uma partição automaticamente no boot de uma distro Linux \| Terminal de Informação](https://terminaldeinformacao.com/2015/08/07/como-inicializar-uma-particao-automaticamente-no-boot-de-uma-distro-linux/)
   ## NVIDIA GPU
   ### Instalar nvidia-driver-415 (mais atual)
   ```shell

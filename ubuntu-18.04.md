@@ -156,8 +156,8 @@
   ```
   ### Resolução 720p
   Em telas com resolução HD, o tamanho da fonte `default` é muito grande.
-  Instalando o app `GNOME Tweak Tool`, ele vai permitir mudar o fonte do sistema todo, menos do `Gnome Shell` (Topbar e menu de aplicações).
-  Abaixo estão 2 alternativas:   
+  Instalando o app `GNOME Tweak Tool`, ele vai permitir mudar o fonte do sistema todo, menos do `Gnome Shell` (Topbar e menu de aplicações).   
+  Abaixo estão 2 alternativas para resolver o problema:   
      
   **1. Criar um tema novo**   
   Instale a extensão do Gnome chamado `User Themes` pela loja do Ubuntu.

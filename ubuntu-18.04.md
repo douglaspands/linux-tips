@@ -22,6 +22,7 @@
   ```shell
   sudo apt-get install preload
   ```
+  Reiniciar o Ubuntu após a instalação.
   ## SSD
   ### Remover auditoria de leitura e adicionar trim
   ```shell

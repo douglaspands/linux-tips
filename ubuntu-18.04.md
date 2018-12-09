@@ -165,8 +165,8 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 ```
 ### Resolução 720p
 Abaixo estão 2 alternativas:   
-  
-**1. Criar um tema novo**
+> Minha preferencia é a 2.
+#### 1. Criar um tema novo
 Em telas com resolução HD, o tamanho da fonte `default` é muito grande.
 Instalando o app `GNOME Tweak Tool`, ele vai permitir mudar o fonte do sistema todo, menos do `Gnome Shell` (Topbar e menu de aplicações).
 Pra resover isso, instale a extensão do Gnome chamado `User Themes` pela loja do Ubuntu.
@@ -191,7 +191,7 @@ stage {
 Após editar o arquivo e salvar, entrar no `Gnome Tweak Tool` na aba `Aparência`.
 No `Tema/Shell` mudar de padrão para `Ubuntu-shell-720p` e fechar o `Gnome Tweal Shell`. Após isso, o `Gnome Shell` estará com o tamanho de fonte alterado.
   
-**2. Alterar configurações nativas**
+#### 2. Alterar configurações nativas
 Para os 2 arquivos abaixo, executar as mesmas alterações:
 1. Substituir `font-size: 10px` para `font-size: 8px`; 
 2. Substituir `font-size: 11px` para `font-size: 9px`; 

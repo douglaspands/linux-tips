@@ -242,7 +242,8 @@ Remove a distancia dos aplicativos no canto direito da barra de status.
 > Em uso (distancia: 1)
 #### Window Corner Preview
 Permite que fique um PIP da janela de sua escolha em segundo plano. 
-> Em uso (muito util)
+![screenshot_1227.png](https://extensions.gnome.org/extension-data/screenshots/screenshot_1227.png)
+> Em uso (muito util)   
 #### User Themes
 Permite criar temas customizados.
 #### Unite

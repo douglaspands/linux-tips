@@ -10,6 +10,32 @@ Remove aplicativo, mas não remove suas configurações e nem o \*.deb do cache
 dpkg -P --force-depends foo
 ```
 Remove aplicativo (inclusive do cache) e suas configurações.
+### Verificação de dependencias reversas
+Será verificado todos os apps que dependem desse pacote.
+```shell
+apt-cache rdepends packagename
+```
+### Remover pacotes orfãos
+```shell
+sudo apt install gtkorphan
+```
+Via interface visual, é listado todos os pacotes orfãos podendo ser removidos apenas ticando a aplicação e clicando no botão OK. 
+### SNAP - Remover pacotes velhos (que já foram atualizados e estão desabilitados)
+Criar arquivo `shellscript` com o nome `snap_remove_old.sh` com o seguinte conteudo:
+```sh
+#!/bin/bash
+# Removes old revisions of snaps
+# CLOSE ALL SNAPS BEFORE RUNNING THIS
+set -eu
+snap list --all | awk '/disabled/{print $1, $3}' |
+    while read snapname revision; do
+        snap remove "$snapname" --revision="$revision"
+    done
+```
+Depois executar esse arquivo como `sudo`:
+```sh
+sudo sh snap_remove_old.sh
+```
 ## SWAP
 ### Swappiness
 Reduzir o consumo de memoria `swap` (memoria em disco) 
@@ -28,7 +54,7 @@ sudo apt-get install preload
 ```shell
 sudo gedit /etc/fstab
 ```
-Substituir **errors=remount-ro** por **discard,noatime,errors=remount-ro**.    
+Substituir **errors=remount-ro** por **discard,nodiratime,noatime,errors=remount-ro**.    
 Salvar e reiniciar o computador.
 ## NVIDIA GPU
 ### Instalar nvidia-driver-415 (mais atual)
@@ -202,13 +228,18 @@ Para os 2 arquivos abaixo, executar as mesmas alterações:
 sudo gedit /usr/share/gnome-shell/theme/gdm3.css
 sudo gedit /usr/share/gnome-shell/theme/gnome-shell.css
 ```
+> Antes de editar os arquivos acima, fazer backup.
+> ```sh
+> sudo cp /usr/share/gnome-shell/theme/gdm3.css /usr/share/gnome-shell/theme/gdm3.css_bkp
+> sudo cp /usr/share/gnome-shell/theme/gnome-shell.css /usr/share/gnome-shell/theme/gnome-shell.css_bkp
+> ```
 As demais fontes, alterar pelo app `GNOME Tweak Tool`.
 ### Extensões Gnome
 #### No Title Bar
 Remove a barra da janela e inclui os botões de minimar, mazimizar e fechar na barra de status
 #### Status Area Horizontal Spacing
 Remove a distancia dos aplicativos no canto direito da barra de status.
-> Em uso (distancia: 3)
+> Em uso (distancia: 1)
 #### Window Corner Preview
 Permite que fique um PIP da janela de sua escolha em segundo plano. 
 > Em uso (muito util)

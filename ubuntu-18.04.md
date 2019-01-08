@@ -197,7 +197,7 @@ sudo gedit /usr/share/gnome-shell/theme/gdm3.css
 sudo gedit /usr/share/gnome-shell/theme/gnome-shell.css
 sudo gedit /usr/share/gnome-shell/theme/ubuntu.css
 ```
-Alteração (costuma ficar no inicio do codigo):
+Alterar o tamanho do fonte global de `11pt` para `9pt` (costuma ficar no inicio do codigo):
 ```css
 /* GLOBALS */
 stage {

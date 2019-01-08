@@ -189,51 +189,24 @@ Se quiser voltar atrás, execute todos os comandos anteriores, porem, no passo 4
 ```shell
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 ```
-### Resolução 720p
-Abaixo estão 2 alternativas:   
-> Minha preferencia é a 2.
-#### 1. Criar um tema novo
-Em telas com resolução HD, o tamanho da fonte `default` é muito grande.
-Instalando o app `GNOME Tweak Tool`, ele vai permitir mudar o fonte do sistema todo, menos do `Gnome Shell` (Topbar e menu de aplicações).
-Pra resover isso, instale a extensão do Gnome chamado `User Themes` pela loja do Ubuntu.
-Criar um tema e as seguintes pastas e arquivos:
-```sh
-mkdir -p ~/.themes
-cd ~/.themes
-mkdir -p ubuntu-shell-720p
-cd ubuntu-shell-720p
-mkdir -p gnome-shell
-cd gnome-shell
-gedit gnome-shell.css
-```
-Editar o arquivo e salvar
-```css
-@import url("/usr/share/gnome-shell/theme/ubuntu.css");
-stage {
-  font-family: Ubuntu, Cantarell, Sans-Serif;
-  font-size: 9pt;
-}
-```
-Após editar o arquivo e salvar, entrar no `Gnome Tweak Tool` na aba `Aparência`.
-No `Tema/Shell` mudar de padrão para `Ubuntu-shell-720p` e fechar o `Gnome Tweal Shell`. Após isso, o `Gnome Shell` estará com o tamanho de fonte alterado.
-  
-#### 2. Alterar configurações nativas
-Para os 2 arquivos abaixo, executar as mesmas alterações:
-1. Substituir `font-size: 10px` para `font-size: 8px`; 
-2. Substituir `font-size: 11px` para `font-size: 9px`; 
-3. Substituir `font-size: 12px` para `font-size: 10px`;
-4. Substituir `font-size: 13px` para `font-size: 11px`;
-5. Substituir `font-size: 14px` para `font-size: 12px`;   
+### Monitor com resolução 720p (1366x768)
+Para monitores com resolução 720p (1366x768) o tamanho da fonte padrão é muito grande.
+Para corrigir isso, é necessario editar o mesmo ponto nos seguintes arquivos:
 ```shell
 sudo gedit /usr/share/gnome-shell/theme/gdm3.css
 sudo gedit /usr/share/gnome-shell/theme/gnome-shell.css
+sudo gedit /usr/share/gnome-shell/theme/ubuntu.css
 ```
-> Antes de editar os arquivos acima, fazer backup.
-> ```sh
-> sudo cp /usr/share/gnome-shell/theme/gdm3.css /usr/share/gnome-shell/theme/gdm3.css_bkp
-> sudo cp /usr/share/gnome-shell/theme/gnome-shell.css /usr/share/gnome-shell/theme/gnome-shell.css_bkp
-> ```
+Alteração (costuma ficar no inicio do codigo):
+```css
+/* GLOBALS */
+stage {
+  font-family: Cantarell, Sans-Serif;
+  font-size: 9pt; /* <== Substituir de 11pt para 9pt */ 
+  color: #eeeeec; }
+```
 As demais fontes, alterar pelo app `GNOME Tweak Tool`.
+
 ### Extensões Gnome
 #### No Title Bar
 Remove a barra da janela e inclui os botões de minimar, mazimizar e fechar na barra de status

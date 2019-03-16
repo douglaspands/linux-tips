@@ -97,7 +97,13 @@ Ferramenta em linha de comando para gerenciamento de energia.
 ```shell
 sudo add-apt-repository ppa:linrunner/tlp
 sudo apt-get update 
-sudo apt-get install --no-install-recommends tlp tlp-rdw ethtool smartmontools 
+sudo apt-get install tlp tlp-rdw 
+```
+Reiniciar o computador para iniciar o TLP.
+Se não quiser iniciar é só digitar:
+```shell
+sudo tlp start
+sudo tlp-stat -s
 ```
 ### TLPUI - Inteface Visual
 Interface visual da ferramenta TLP para gerenciamento de energia.

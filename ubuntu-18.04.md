@@ -100,7 +100,7 @@ sudo apt-get update
 sudo apt-get install tlp tlp-rdw 
 ```
 Reiniciar o computador para iniciar o TLP.
-Se não quiser iniciar é só digitar:
+Se não quiser reiniciar é só digitar:
 ```shell
 sudo tlp start
 sudo tlp-stat -s

@@ -36,6 +36,11 @@ Depois executar esse arquivo como `sudo`:
 ```sh
 sudo sh snap_remove_old.sh
 ```
+### SNAP - Acesso a outros discos / pendrive / sd
+Darei acesso a outros discos e medias para a aplicação `retroarch` no formato `snap` (exemplo):
+```shell
+sudo snap connect retroarch:removable-media
+```
 ## SWAP
 ### Swappiness
 Reduzir o consumo de memoria `swap` (memoria em disco) 

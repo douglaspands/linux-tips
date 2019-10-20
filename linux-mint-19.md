@@ -4,7 +4,47 @@
 ```shell
 inxi -Fxz
 ```
-
+## SOFTWARE
+### Desinstalar aplicativo sem remover dependencias
+```shell
+dpkg -r --force-depends foo
+```
+Remove aplicativo, mas não remove suas configurações e nem o \*.deb do cache
+```shell
+dpkg -P --force-depends foo
+```
+Remove aplicativo (inclusive do cache) e suas configurações.
+### Verificação de dependencias reversas
+Será verificado todos os apps que dependem desse pacote.
+```shell
+apt-cache rdepends packagename
+```
+### Remover pacotes orfãos
+```shell
+sudo apt install gtkorphan
+```
+Via interface visual, é listado todos os pacotes orfãos podendo ser removidos apenas ticando a aplicação e clicando no botão OK. 
+### SNAP - Remover pacotes velhos (que já foram atualizados e estão desabilitados)
+Criar arquivo `shellscript` com o nome `snap_remove_old.sh` com o seguinte conteudo:
+```sh
+#!/bin/bash
+# Removes old revisions of snaps
+# CLOSE ALL SNAPS BEFORE RUNNING THIS
+set -eu
+snap list --all | awk '/disabled/{print $1, $3}' |
+    while read snapname revision; do
+        snap remove "$snapname" --revision="$revision"
+    done
+```
+Depois executar esse arquivo como `sudo`:
+```sh
+sudo sh snap_remove_old.sh
+```
+### SNAP - Acesso a outros discos / pendrive / sd
+Darei acesso a outros discos e medias para a aplicação `retroarch` no formato `snap` (exemplo):
+```shell
+sudo snap connect retroarch:removable-media
+```
 ## SSD
 ### SWAPINESS
 ```shell
@@ -78,3 +118,10 @@ sudo snap refresh
 ```shell
 flatpak update
 ```
+## INTERFACE
+### QT LIKE GTK
+Entrar nas configurações
+```shell
+qt5ct
+```
+dica: [Temas GTK em aplicações Qt](https://www.diolinux.com.br/2019/02/temas-gtk-em-aplicacoes-qt.html)

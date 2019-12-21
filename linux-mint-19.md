@@ -58,13 +58,20 @@ sudo xed /etc/fstab
 Now change “errors=remount-ro” to “discard,noatime,errors=remount-ro”.    
 Save the file and reboot.
 
+### PRELOAD
+Aplicativo que ajuda a aumentar a agilidade da abertura de programas que geralmente você usa diariamente, navegadores, editores de texto ou players de som.
+Ele se mantém rodando em background, sem solicitar nenhuma intervenção do usuário, monitorando quais são os programas mais utilizados, movendo-os para áreas mais acessíveis do disco, ou mesmo pré-carregando algumas partes de programas mais complexos e muito utilizados, dando um perceptível ganho em velocidade de uso.
+```shell
+sudo apt-get install preload
+```
+
 ## HYBRID GPU DRIVER
-### INSTALL NVIDIA DRIVER ONLY (430)
+### INSTALAR DRIVER NVIDIA 920M (VERSAO 430)
 ```shell
 sudo apt-get purge *nvidia*
-sudo add-apt-repository ppa:graphics-drivers
+sudo rm /lib/modprobe.d/blacklist-nvidia.conf
 sudo apt-get update
-sudo apt-get --install-recommends install nvidia-driver-430
+sudo apt-get --install-recommends install nvidia-driver-430 nvidia-prime-applet 
 ```
 
 ### REMOVE TEARING (NVIDIA)

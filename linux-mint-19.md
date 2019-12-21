@@ -61,7 +61,7 @@ Save the file and reboot.
 ## HYBRID GPU DRIVER
 ### INSTALL NVIDIA DRIVER ONLY (430)
 ```shell
-sudo apt-get purge nvidia*
+sudo apt-get purge *nvidia*
 sudo add-apt-repository ppa:graphics-drivers
 sudo apt-get update
 sudo apt-get --install-recommends install nvidia-driver-430

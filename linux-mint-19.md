@@ -59,12 +59,12 @@ Now change “errors=remount-ro” to “discard,noatime,errors=remount-ro”.
 Save the file and reboot.
 
 ## HYBRID GPU DRIVER
-### INSTALL NVIDIA DRIVER ONLY (396)
+### INSTALL NVIDIA DRIVER ONLY (430)
 ```shell
 sudo apt-get purge nvidia*
 sudo add-apt-repository ppa:graphics-drivers
 sudo apt-get update
-sudo apt install nvidia-driver-396
+sudo apt-get --install-recommends install nvidia-driver-430
 ```
 
 ### REMOVE TEARING (NVIDIA)

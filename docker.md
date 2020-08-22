@@ -1,6 +1,6 @@
 # Dicas de Docker
 
-## Remover containers sem uso
+## Remover todos os containers
 
 1. Parar os containers
 

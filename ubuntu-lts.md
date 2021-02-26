@@ -101,7 +101,7 @@ Adicionar as seguintes linhas no arquivo `etc/modprobe.d/btconfig.conf`:
 blacklist acer_wmi
 options ath9k btcoex_enable=1 bt_ant_diversity=1
 ```
-> O Wifi e o Bluetooth é fornecido pelo mesmo componente `Qualcomm Atheros QCA9565 / AR9565 Wireless Network Adapter`. 
+> O Wifi e o Bluetooth são fornecidos pelo mesmo componente `Qualcomm Atheros QCA9565 / AR9565 Wireless Network Adapter`. 
 ## LAPTOP
 ### TLP - Economizar bateria
 Ferramenta em linha de comando para gerenciamento de energia.

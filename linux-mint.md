@@ -1,4 +1,4 @@
-# LINUX MINT 19 
+# LINUX MINT 
 
 ## VERIFICAR HARDWARE
 ```shell
@@ -103,6 +103,15 @@ Use Nvidia GPU:
 ```shell
 sudo prime-select nvidia
 ```
+
+## Bluetooth Driver (Acer E5-573G)
+Adicionar as seguintes linhas no arquivo `etc/modprobe.d/btconfig.conf`:
+```bash
+blacklist acer_wmi
+options ath9k btcoex_enable=1 bt_ant_diversity=1
+```
+> O Wifi e o Bluetooth é fornecido pelo mesmo componente `Qualcomm Atheros QCA9565 / AR9565 Wireless Network Adapter`. 
+
 ## BATTERY SAVE (LAPTOP)
 ### INSTALL TLP – Linux Advanced Power Management
 Fonte: [Blog do Edivaldo](https://www.edivaldobrito.com.br/tlp-no-ubuntu/)   

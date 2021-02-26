@@ -1,4 +1,4 @@
-# UBUNTU 18.04 LTS
+# UBUNTU LTS
 ___
 ## SOFTWARE
 ### Desinstalar aplicativo sem remover dependencias
@@ -61,15 +61,15 @@ sudo gedit /etc/fstab
 ```
 Substituir **errors=remount-ro** por **discard,nodiratime,noatime,errors=remount-ro**.    
 Salvar e reiniciar o computador.
-## NVIDIA GPU
-### Instalar nvidia-driver-415 (mais atual)
+## NVIDIA GPU (Acer E5-573G -> NVIDIA 920M)
+### Instalar nvidia-driver-4xx
 ```shell
 sudo apt-get purge nvidia*
 sudo add-apt-repository ppa:graphics-drivers
 sudo apt-get update
-sudo apt install nvidia-driver-415
+sudo apt install nvidia-driver-4XX
 ```
-> O driver mais atual é o nvidia-driver-415
+> O driver nvidia-driver-430 é a ultima versão com suporte para a GPU 920M, porem, no Ubuntu 20.04 ele instalou nvidia-driver-450 e esta funcionando corretamente.
 ### Alternar entre GPU Nvidia e Intel (prime-select)
 Usar GPU Intel:
 ```shell
@@ -95,7 +95,13 @@ Após iniciar, consulte se deu certo:
 sudo cat /sys/module/nvidia_drm/parameters/modeset
 ```
 Tem que aparecer um "Y".
-  
+## Bluetooth Driver (Acer E5-573G)
+Adicionar as seguintes linhas no arquivo `etc/modprobe.d/btconfig.conf`:
+```bash
+blacklist acer_wmi
+options ath9k btcoex_enable=1 bt_ant_diversity=1
+```
+> O Wifi e o Bluetooth é fornecido pelo mesmo componente `Qualcomm Atheros QCA9565 / AR9565 Wireless Network Adapter`. 
 ## LAPTOP
 ### TLP - Economizar bateria
 Ferramenta em linha de comando para gerenciamento de energia.
@@ -200,24 +206,6 @@ Se quiser voltar atrás, execute todos os comandos anteriores, porem, no passo 4
 ```shell
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 ```
-### Monitor com resolução 720p (1366x768)
-Para monitores com resolução 720p (1366x768) o tamanho da fonte padrão é muito grande.
-Para corrigir isso, é necessario editar o mesmo ponto nos seguintes arquivos:
-```shell
-sudo gedit /usr/share/gnome-shell/theme/gdm3.css
-sudo gedit /usr/share/gnome-shell/theme/gnome-shell.css
-sudo gedit /usr/share/gnome-shell/theme/ubuntu.css
-```
-Alterar o tamanho do fonte global de `11pt` para `9pt` (costuma ficar no inicio do codigo):
-```css
-/* GLOBALS */
-stage {
-  font-family: Cantarell, Sans-Serif;
-  font-size: 9pt; /* <== Substituir de 11pt para 9pt */ 
-  color: #eeeeec; }
-```
-As demais fontes, alterar pelo app `GNOME Tweak Tool`.
-
 ### Extensões Gnome
 #### No Title Bar
 Remove a barra da janela e inclui os botões de minimar, mazimizar e fechar na barra de status

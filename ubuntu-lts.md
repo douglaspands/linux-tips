@@ -21,7 +21,7 @@ sudo apt install gtkorphan
 ```
 Via interface visual, é listado todos os pacotes orfãos podendo ser removidos apenas ticando a aplicação e clicando no botão OK. 
 ### SNAP - Remover pacotes velhos (que já foram atualizados e estão desabilitados)
-Criar arquivo `shellscript` com o nome `snap_remove_old.sh` com o seguinte conteudo:
+Criar arquivo `shellscript` com o nome `snap_autoremove.sh` com o seguinte conteudo:
 ```sh
 #!/bin/bash
 # Removes old revisions of snaps
@@ -34,7 +34,7 @@ snap list --all | awk '/disabled/{print $1, $3}' |
 ```
 Depois executar esse arquivo como `sudo`:
 ```sh
-sudo sh snap_remove_old.sh
+sudo sh snap_autoremove.sh
 ```
 ### SNAP - Acesso a outros discos / pendrive / sd
 Darei acesso a outros discos e medias para a aplicação `retroarch` no formato `snap` (exemplo):
@@ -95,6 +95,47 @@ Após iniciar, consulte se deu certo:
 sudo cat /sys/module/nvidia_drm/parameters/modeset
 ```
 Tem que aparecer um "Y".
+## AMD GPU
+### Instalar driver customizado para R7 370 / R9 370 (com Vulkan)
+```bash
+sudo add-apt-repository ppa:kisak/kisak-mesa
+```
+```bash
+sudo dpkg --add-architecture i386 
+```
+```bash
+sudo apt update && sudo apt upgrade
+```
+```bash
+sudo apt install -y libwayland-egl1 mesa-vulkan-drivers mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
+```
+```bash
+sudo gedit /etc/default/grub
+```
+Adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` as instruções `radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1` como exemplo abaixo:
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1"
+```
+```bash
+sudo update-grub
+```
+Reiniciar o computador.
+Criar o arquivo abaixo:
+```bash
+sudo gedit /usr/share/X11/xorg.conf.d/20-radeon.conf
+```
+Preencher da seguinte forma:
+```txt
+Section "Device"
+        Identifier  "AMD"
+        Driver "AMDGPU"
+        Option "DRI3"                  "on" #enable DRI3 instead of the default DRI2-mode
+EndSection
+```
+Reiniciar o computador.
+> Fontes:
+> - https://github.com/lutris/docs/blob/master/InstallingDrivers.md
+> - https://forums.linuxmint.com/viewtopic.php?t=272283
 ## Bluetooth Driver (Acer E5-573G)
 Adicionar as seguintes linhas no arquivo `etc/modprobe.d/btconfig.conf`:
 ```bash
@@ -211,13 +252,4 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 Remove a barra da janela e inclui os botões de minimar, mazimizar e fechar na barra de status
 #### Status Area Horizontal Spacing
 Remove a distancia dos aplicativos no canto direito da barra de status.
-> Em uso (distancia: 1)
-#### Window Corner Preview
-Permite que fique um PIP da janela de sua escolha em segundo plano. 
-![screenshot_1227.png](https://extensions.gnome.org/extension-data/screenshots/screenshot_1227.png)
-> Em uso (muito util)   
-#### User Themes
-Permite criar temas customizados.
-#### Unite
-Deixa a interface do Gnome parecido com a Unity.
-  
+> Em uso (distancia: 6)

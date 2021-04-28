@@ -165,7 +165,16 @@ sudo add-apt-repository ppa:linuxuprising/apps
 sudo apt update
 sudo apt install tlpui
 ```
-## MEMORIAS (RAM, CACHE, ETC...)
+## VERIFICAR HARDWARE
+### Verificar Clock do CPU em tempo real pelo terminal
+Resumido:
+```shell
+watch -n.1 "lscpu | grep MHz"
+```
+Por nucleo:
+```shell
+watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"
+```
 ### Verificar a RAM e slots disponiveis
 ```shell
 sudo dmidecode --type 17

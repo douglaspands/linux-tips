@@ -122,21 +122,6 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash radeon.si_support=0 radeon.cik_support=
 sudo update-grub
 ```
 Reiniciar o computador.
-#### Opcional
-Criar o arquivo abaixo:
-```bash
-sudo gedit /usr/share/X11/xorg.conf.d/20-radeon.conf
-```
-Preencher da seguinte forma:
-```txt
-Section "Device"
-        Identifier  "AMD"
-        Driver "AMDGPU"
-        Option "DRI3"                  "on" #enable DRI3 instead of the default DRI2-mode
-EndSection
-```
-Reiniciar o computador.
-> Estou avaliando se há necessidade dessa configuração.   
 ### Fontes:
 - https://github.com/lutris/docs/blob/master/InstallingDrivers.md
 - https://forums.linuxmint.com/viewtopic.php?t=272283

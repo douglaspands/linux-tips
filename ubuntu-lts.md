@@ -122,6 +122,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash radeon.si_support=0 radeon.cik_support=
 sudo update-grub
 ```
 Reiniciar o computador.
+#### Opcional
 Criar o arquivo abaixo:
 ```bash
 sudo gedit /usr/share/X11/xorg.conf.d/20-radeon.conf
@@ -135,9 +136,10 @@ Section "Device"
 EndSection
 ```
 Reiniciar o computador.
-> Fontes:
-> - https://github.com/lutris/docs/blob/master/InstallingDrivers.md
-> - https://forums.linuxmint.com/viewtopic.php?t=272283
+> Estou avaliando se há necessidade dessa configuração.   
+### Fontes:
+- https://github.com/lutris/docs/blob/master/InstallingDrivers.md
+- https://forums.linuxmint.com/viewtopic.php?t=272283
 ## Bluetooth Driver (Acer E5-573G)
 Adicionar as seguintes linhas no arquivo `etc/modprobe.d/btconfig.conf`:
 ```bash

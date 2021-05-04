@@ -115,9 +115,9 @@ sudo gedit /etc/default/grub
 ```
 Adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` as instruções abaixo:
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.noretry=0 amdgpu.gpu_recovery=1 amdgpu.runpm=0"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.noretry=0 amdgpu.runpm=0 intel_iommu=on iommu=pt"
 ```
-> Estou avaliando se incluir os parametros "intel_iommu=on iommu=pt" evita alguns problemas no funcionamento do SO (X99 + AMD GPU).
+> Estou avaliando se incluir os parametros "amdgpu.gpu_recovery=1" evita alguns problemas no funcionamento do SO (X99 + AMD GPU).
 ```bash
 sudo update-grub
 ```

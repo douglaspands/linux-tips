@@ -115,11 +115,15 @@ sudo gedit /etc/default/grub
 ```
 Adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` as instruções abaixo:
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.noretry=0 amdgpu.gpu_recovery=1"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.noretry=0 amdgpu.gpu_recovery=1 amdgpu.runpm=0"
 ```
 > Estou avaliando se incluir os parametros "intel_iommu=on iommu=pt" evita alguns problemas no funcionamento do SO (X99 + AMD GPU).
 ```bash
 sudo update-grub
+```
+Incluir o driver radeon na blacklist:
+```bash
+sudo echo "blacklist radeon" >> /etc/modprobe.d/blacklist.conf
 ```
 Reiniciar o computador.
 ### Fontes:

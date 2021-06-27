@@ -117,7 +117,8 @@ Adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` as instruções abaixo:
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.noretry=0 amdgpu.runpm=0 intel_iommu=on iommu=pt"
 ```
-> Estou avaliando se incluir os parametros "amdgpu.gpu_recovery=1" evita alguns problemas no funcionamento do SO (X99 + AMD GPU).
+> `amdgpu.gpu_recovery=1`: Avaliando. Evita alguns problemas no funcionamento do SO (X99 + AMD GPU).
+> `acpi_backlight=vendor`: Avaliando. Evita alguns problemas no funcionamento do SO (X99 + AMD GPU).
 ```bash
 sudo update-grub
 ```

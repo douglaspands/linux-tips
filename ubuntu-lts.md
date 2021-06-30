@@ -162,7 +162,7 @@ sudo apt install tlpui
 ```bash
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 ```
-**Desativar**
+**Ativar**
 ```bash
 sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
 ```

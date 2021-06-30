@@ -115,11 +115,9 @@ sudo gedit /etc/default/grub
 ```
 Adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` as instruções abaixo:
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.noretry=0 amdgpu.runpm=0 intel_iommu=on iommu=pt"
+GRUB_CMDLINE_LINUX_DEFAULT="radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.noretry=0 amdgpu.gpu_recovery=1 quiet splash"
 ```
-> - `amdgpu.gpu_recovery=1`: Avaliando (Evita alguns problemas no funcionamento do SO (X99 + AMD GPU));   
-> - `acpi_backlight=vendor`: Avaliando (Evita alguns problemas no funcionamento do SO (X99 + AMD GPU));   
-> - `amdgpu.vm_fragment_size=9`: Avaliando (Evita alguns problemas no funcionamento do SO (X99 + AMD GPU));
+> `amdgpu.runpm=0 intel_iommu=on iommu=pt` Em avaliação.
 ```bash
 sudo update-grub
 ```
@@ -138,8 +136,8 @@ blacklist acer_wmi
 options ath9k btcoex_enable=1 bt_ant_diversity=1
 ```
 > O Wifi e o Bluetooth são fornecidos pelo mesmo componente `Qualcomm Atheros QCA9565 / AR9565 Wireless Network Adapter`. 
-## LAPTOP
-### TLP - Economizar bateria
+## GESTÃO DE ENERGIA
+### TLP - Economizar bateria (LAPTOP)
 Ferramenta em linha de comando para gerenciamento de energia.
 ```shell
 sudo add-apt-repository ppa:linrunner/tlp
@@ -159,6 +157,22 @@ sudo add-apt-repository ppa:linuxuprising/apps
 sudo apt update
 sudo apt install tlpui
 ```
+### Hibernação
+**Desativar**
+```bash
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+**Desativar**
+```bash
+sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+**Status**
+```bash
+sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+> Fonte: https://www.tecmint.com/disable-suspend-and-hibernation-in-linux/
+### Desabilitar a suspensão da USB
+Adicionar o parametro `usbcore.autosuspend=-1` no `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub`.
 ## VERIFICAR HARDWARE
 ### Verificar Clock do CPU em tempo real pelo terminal
 Resumido:

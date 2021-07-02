@@ -109,13 +109,13 @@ sudo apt update && sudo apt upgrade
 ```bash
 sudo apt install -y libwayland-egl1 mesa-vulkan-drivers mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386 libdrm-amdgpu1
 ```
-### Ativar driver AMDGPU (para R7 370 / R9 370 de Desktop)
+### Ativar driver AMDGPU (para R7 370 / R9 370)
 ```bash
 sudo gedit /etc/default/grub
 ```
 Adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` as instruções abaixo:
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.gpu_recovery=1 usbcore.autosuspend=-1 iommu=pt quiet splash"
+GRUB_CMDLINE_LINUX_DEFAULT="radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.gpu_recovery=1 amdgpu.noretry=0 usbcore.autosuspend=-1 iommu=pt quiet splash"
 ```
 ```bash
 sudo update-grub

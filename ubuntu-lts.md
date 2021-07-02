@@ -115,7 +115,7 @@ sudo gedit /etc/default/grub
 ```
 Adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` as instruções abaixo:
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.gpu_recovery=1 amdgpu.noretry=0 usbcore.autosuspend=-1 iommu=pt quiet splash"
+GRUB_CMDLINE_LINUX_DEFAULT="radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.gpu_recovery=1 amdgpu.noretry=0 usbcore.autosuspend=-1 quiet splash"
 ```
 ```bash
 sudo update-grub
@@ -128,6 +128,8 @@ Reiniciar o computador.
 ### Fontes:
 - https://github.com/lutris/docs/blob/master/InstallingDrivers.md
 - https://forums.linuxmint.com/viewtopic.php?t=272283
+- https://forum.manjaro.org/t/system-freezes-randomly/62509/15
+- https://www.phoronix.com/scan.php?page=news_item&px=AMDGPU-APU-noretry
 ## Bluetooth Driver (Acer E5-573G)
 Adicionar as seguintes linhas no arquivo `etc/modprobe.d/btconfig.conf`:
 ```bash

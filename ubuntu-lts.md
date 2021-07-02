@@ -107,7 +107,7 @@ sudo dpkg --add-architecture i386
 sudo apt update && sudo apt upgrade
 ```
 ```bash
-sudo apt install -y libwayland-egl1 mesa-vulkan-drivers mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
+sudo apt install -y libwayland-egl1 mesa-vulkan-drivers mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386 libdrm-amdgpu1
 ```
 ### Ativar driver AMDGPU (para R7 370 / R9 370 de Desktop)
 ```bash

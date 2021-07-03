@@ -115,7 +115,7 @@ sudo gedit /etc/default/grub
 ```
 Adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` as instruções abaixo:
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.gpu_recovery=1 amdgpu.noretry=0 usbcore.autosuspend=-1 quiet splash"
+GRUB_CMDLINE_LINUX_DEFAULT="radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.gpu_recovery=1 amdgpu.noretry=0 quiet splash"
 ```
 ```bash
 sudo update-grub
@@ -137,6 +137,39 @@ blacklist acer_wmi
 options ath9k btcoex_enable=1 bt_ant_diversity=1
 ```
 > O Wifi e o Bluetooth são fornecidos pelo mesmo componente `Qualcomm Atheros QCA9565 / AR9565 Wireless Network Adapter`. 
+## X99 (Processador Intel Xeon)
+### Parametros no boot
+Alguns parametros para adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub` as instruções abaixo:
+- `usbcore.autosuspend=-1`: Evita suspender as USBs (não precisa em Desktop);
+- `iommu=pt`: Evita erros de referentes a tecnologia de virtualização da Intel;
+- `pci=nommconf`: Evita erros desse tipo `snd_hda_intel 0000:03:00.1: AER: can't recover (no error_detected callback)`;
+### Capturar logs
+Adicionar essa função no arquivo `~/.bashrc`:
+```bash
+machine_log () {
+        local date_now=$(date +"%Y%m%dT%H%M")
+        journalctl -b -1 -e > ~/logs/log-$date_now-jornalctl.log
+        sudo cat /var/log/syslog > ~/logs/log-$date_now-syslog.log
+}
+```
+Executar: 
+```bash
+source ~/.bashrc
+```
+### Hibernação
+**Desativar**
+```bash
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+**Ativar**
+```bash
+sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+**Status**
+```bash
+sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+> Fonte: https://www.tecmint.com/disable-suspend-and-hibernation-in-linux/
 ## GESTÃO DE ENERGIA
 ### TLP - Economizar bateria (LAPTOP)
 Ferramenta em linha de comando para gerenciamento de energia.
@@ -158,20 +191,6 @@ sudo add-apt-repository ppa:linuxuprising/apps
 sudo apt update
 sudo apt install tlpui
 ```
-### Hibernação
-**Desativar**
-```bash
-sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
-```
-**Ativar**
-```bash
-sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
-```
-**Status**
-```bash
-sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
-```
-> Fonte: https://www.tecmint.com/disable-suspend-and-hibernation-in-linux/
 ### Desabilitar a suspensão da USB
 Adicionar o parametro `usbcore.autosuspend=-1` no `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub`.
 ## VERIFICAR HARDWARE

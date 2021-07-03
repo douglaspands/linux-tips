@@ -130,6 +130,7 @@ Reiniciar o computador.
 - https://forums.linuxmint.com/viewtopic.php?t=272283
 - https://forum.manjaro.org/t/system-freezes-randomly/62509/15
 - https://www.phoronix.com/scan.php?page=news_item&px=AMDGPU-APU-noretry
+- https://forums.gentoo.org/viewtopic-t-1000512-start-0.html
 ## Bluetooth Driver (Acer E5-573G)
 Adicionar as seguintes linhas no arquivo `etc/modprobe.d/btconfig.conf`:
 ```bash

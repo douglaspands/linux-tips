@@ -115,7 +115,7 @@ sudo gedit /etc/default/grub
 ```
 Adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` as instruções abaixo:
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.gpu_recovery=1 amdgpu.noretry=0 quiet splash"
+GRUB_CMDLINE_LINUX_DEFAULT="radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.gpu_recovery=1 amdgpu.noretry=0 amdgpu.dpm=0 quiet splash"
 ```
 ```bash
 sudo update-grub

@@ -115,7 +115,7 @@ sudo gedit /etc/default/grub
 ```
 Adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` as instruções abaixo:
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.gpu_recovery=1 amdgpu.noretry=0 amdgpu.dpm=0 quiet splash"
+GRUB_CMDLINE_LINUX_DEFAULT="radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=1 amdgpu.cik_support=1 amdgpu.gpu_recovery=1 amdgpu.noretry=0 amdgpu.dpm=1 amdgpu.vm_fragment_size=9 amdgpu.ppfeaturemask=0xfffd7fff quiet splash"
 ```
 ```bash
 sudo update-grub
@@ -125,12 +125,17 @@ Incluir o driver radeon na blacklist:
 sudo echo "blacklist radeon" >> /etc/modprobe.d/blacklist.conf
 ```
 Reiniciar o computador.
+#### Somente Desktop
+Editar o arquivo `/sys/class/drm/card0/device/power_dpm_state` como sudo, substituindo o `balance` por `performance`.
 ### Fontes:
 - https://github.com/lutris/docs/blob/master/InstallingDrivers.md
 - https://forums.linuxmint.com/viewtopic.php?t=272283
 - https://forum.manjaro.org/t/system-freezes-randomly/62509/15
 - https://www.phoronix.com/scan.php?page=news_item&px=AMDGPU-APU-noretry
 - https://forums.gentoo.org/viewtopic-t-1000512-start-0.html
+- https://www.linux-kvm.org/page/How_to_assign_devices_with_VT-d_in_KVM
+- https://www.kernel.org/doc/html/v5.11/x86/intel-iommu.html
+- https://www.kernel.org/doc/html/v5.8/gpu/amdgpu.html
 ## Bluetooth Driver (Acer E5-573G)
 Adicionar as seguintes linhas no arquivo `etc/modprobe.d/btconfig.conf`:
 ```bash
@@ -142,7 +147,8 @@ options ath9k btcoex_enable=1 bt_ant_diversity=1
 ### Parametros no boot
 Alguns parametros para adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub` as instruções abaixo:
 - `usbcore.autosuspend=-1`: Evita suspender as USBs (não precisa em Desktop);
-- `iommu=pt`: Evita erros de referentes a tecnologia de virtualização da Intel;
+- `intel_iommu=igfx_off`: Evita erros de referentes a tecnologia de virtualização KVM (Intel);
+- `iommu=pt`: Evita erros de referentes a tecnologia de virtualização KVM (AMD);
 - `pci=nommconf`: Evita erros desse tipo `snd_hda_intel 0000:03:00.1: AER: can't recover (no error_detected callback)`;
 ### Capturar logs
 Adicionar essa função no arquivo `~/.bashrc`:
@@ -170,6 +176,7 @@ sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.
 ```bash
 sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
 ```
+> Minha preferencia foi desativar a hibernação no Desktop.
 > Fonte: https://www.tecmint.com/disable-suspend-and-hibernation-in-linux/
 ## GESTÃO DE ENERGIA
 ### TLP - Economizar bateria (LAPTOP)

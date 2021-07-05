@@ -299,3 +299,8 @@ Remove a barra da janela e inclui os botões de minimar, mazimizar e fechar na b
 #### Status Area Horizontal Spacing
 Remove a distancia dos aplicativos no canto direito da barra de status.
 > Em uso (distancia: 6)
+## Extras
+### Remover notificação de instalação da Steam para todos os usuarios
+```bash
+sudo rm -rf /var/lib/update-notifier/user.d/steam-install-notify
+```

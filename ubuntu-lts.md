@@ -283,10 +283,9 @@ Caminho do hardware  Dispositivo  Classe         Descrição
 ## GNOME
 ### Touchpad (tap-to-click) no GDM (Tela de Login)
 ```shell
-sudo -i
-xhost +SI:localuser:gdm
-su gdm -s /bin/bash
-gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+sudo apt install dbus-x11
+xhost SI:localuser:gdm
+sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 sudo reboot
 ```
 Se quiser voltar atrás, execute todos os comandos anteriores, porem, no passo 4, execute o comando abaixo:

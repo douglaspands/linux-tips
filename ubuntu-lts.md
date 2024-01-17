@@ -290,7 +290,7 @@ sudo reboot
 ```
 Se quiser voltar atrás, execute todos os comandos anteriores, porem, no passo 4, execute o comando abaixo:
 ```shell
-gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
+sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 ```
 ### Extensões Gnome
 #### No Title Bar

@@ -201,6 +201,18 @@ sudo apt install tlpui
 ```
 ### Desabilitar a suspensão da USB
 Adicionar o parametro `usbcore.autosuspend=-1` no `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub`.
+## DELL NOTEBOOK
+### Ativar reconhecimento da digital
+Remover aplicações antes de começar:
+```shell
+sudo apt purge fprintd libpam-fprintd
+```
+Instalar as aplicações e iniciar o serviço:
+```shell
+sudo apt install fprintd libpam-fprintd && \
+sudo service fprintd restart
+```
+Reiniciar o computador.
 ## VERIFICAR HARDWARE
 ### Verificar Clock do CPU em tempo real pelo terminal
 Resumido:

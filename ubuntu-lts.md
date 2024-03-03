@@ -143,6 +143,13 @@ blacklist acer_wmi
 options ath9k btcoex_enable=1 bt_ant_diversity=1
 ```
 > O Wifi e o Bluetooth são fornecidos pelo mesmo componente `Qualcomm Atheros QCA9565 / AR9565 Wireless Network Adapter`. 
+## USB
+### Problema: Ao iniciar o computador não é reconhecido o dispositivo (enumerate error)
+Editar o arquivo `/etc/modprobe.d/options` com sudo e adicionar a seguinte linha:
+```
+options usbcore use_both_schemes=y
+```
+> Fonte: [USB drive not recognised (error -71)](https://urukrama.wordpress.com/2009/01/27/usb-drive-not-recognised-error-71/)
 ## X99 (Processador Intel Xeon)
 ### Parametros no boot
 Alguns parametros para adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub` as instruções abaixo:

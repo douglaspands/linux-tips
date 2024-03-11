@@ -220,6 +220,8 @@ sudo apt install fprintd libpam-fprintd && \
 sudo service fprintd restart
 ```
 Reiniciar o computador.
+### Configurações de fechamento da tela
+- [https://fostips.com/lid-close-action-ubuntu-21-04-laptop/](https://fostips.com/lid-close-action-ubuntu-21-04-laptop/)
 ## VERIFICAR HARDWARE
 ### Verificar Clock do CPU em tempo real pelo terminal
 Resumido:
@@ -322,3 +324,5 @@ Remove a distancia dos aplicativos no canto direito da barra de status.
 ```bash
 sudo rm -rf /var/lib/update-notifier/user.d/steam-install-notify
 ```
+
+

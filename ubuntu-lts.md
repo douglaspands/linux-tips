@@ -149,7 +149,18 @@ Editar o arquivo `/etc/modprobe.d/options` com sudo e adicionar a seguinte linha
 ```
 options usbcore use_both_schemes=y
 ```
-> Fonte: [USB drive not recognised (error -71)](https://urukrama.wordpress.com/2009/01/27/usb-drive-not-recognised-error-71/)
+## Audio
+### Problema: Chiado na saida de som
+Acrescente `tsched=0` no parâmetro `load-module module-udev-detect` em `/etc/pulse/default.pa` (usando sudo):
+```
+load-module module-udev-detect tsched=0
+```
+Após salvar, reinicie o PulseAudio com os dois comandos abaixo: 
+```sh
+pulseaudio -k
+pulseaudio --start
+```
+> Fonte: [ubuntu-20-04-com-chiado-no-som](https://plus.diolinux.com.br/t/ubuntu-20-04-com-chiado-no-som/35371)
 ## X99 (Processador Intel Xeon)
 ### Parametros no boot
 Alguns parametros para adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub` as instruções abaixo:

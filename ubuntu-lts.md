@@ -142,15 +142,25 @@ Adicionar as seguintes linhas no arquivo `etc/modprobe.d/btconfig.conf`:
 blacklist acer_wmi
 options ath9k btcoex_enable=1 bt_ant_diversity=1
 ```
-> O Wifi e o Bluetooth são fornecidos pelo mesmo componente `Qualcomm Atheros QCA9565 / AR9565 Wireless Network Adapter`. 
-## USB
-### Problema: Ao iniciar o computador não é reconhecido o dispositivo (enumerate error)
+> O Wifi e o Bluetooth são fornecidos pelo mesmo componente `Qualcomm Atheros QCA9565 / AR9565 Wireless Network Adapter`.
+## BUGS
+### USB
+#### Problema: Ao iniciar o computador não é reconhecido o dispositivo (enumerate error)
 Editar o arquivo `/etc/modprobe.d/options` com sudo e adicionar a seguinte linha:
 ```
 options usbcore use_both_schemes=y
 ```
-## Audio
-### Problema: Chiado na saida de som
+#### Problema: Instabilidade do Wifi USB RTL88x2bu
+A versão 22.04 do Ubuntu já vem com o driver. Porem se ocorrer instabilidades, uma alternativa é instalar o driver alternativo com as instruções abaixo:
+```sh
+sudo apt install git dkms
+git clone https://github.com/cilynx/rtl88x2bu.git
+sudo dkms add ./rtl88x2bu
+sudo dkms install rtl88x2bu/5.8.7.1
+```
+> Fonte: [Wifi issues [SOLVED]](https://forums.linuxmint.com/viewtopic.php?t=392580)
+### Audio
+#### Problema: Chiado na saida de som
 Acrescente `tsched=0` no parâmetro `load-module module-udev-detect` em `/etc/pulse/default.pa` (usando sudo):
 ```
 load-module module-udev-detect tsched=0
@@ -161,6 +171,21 @@ pulseaudio -k
 pulseaudio --start
 ```
 > Fonte: [ubuntu-20-04-com-chiado-no-som](https://plus.diolinux.com.br/t/ubuntu-20-04-com-chiado-no-som/35371)
+### Hibernação
+**Desativar**
+```bash
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+**Ativar**
+```bash
+sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+**Status**
+```bash
+sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+> Minha preferencia foi desativar a hibernação no Desktop.
+> Fonte: https://www.tecmint.com/disable-suspend-and-hibernation-in-linux/
 ## X99 (Processador Intel Xeon)
 ### Parametros no boot
 Alguns parametros para adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub` as instruções abaixo:
@@ -181,21 +206,6 @@ Executar:
 ```bash
 source ~/.bashrc
 ```
-### Hibernação
-**Desativar**
-```bash
-sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
-```
-**Ativar**
-```bash
-sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
-```
-**Status**
-```bash
-sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
-```
-> Minha preferencia foi desativar a hibernação no Desktop.
-> Fonte: https://www.tecmint.com/disable-suspend-and-hibernation-in-linux/
 ## GESTÃO DE ENERGIA
 ### TLP - Economizar bateria (LAPTOP)
 Ferramenta em linha de comando para gerenciamento de energia.

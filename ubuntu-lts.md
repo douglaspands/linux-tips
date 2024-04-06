@@ -186,6 +186,21 @@ sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.
 ```
 > Minha preferencia foi desativar a hibernação no Desktop.
 > Fonte: https://www.tecmint.com/disable-suspend-and-hibernation-in-linux/
+### Desabilitar a suspensão da USB
+Adicionar o parametro `usbcore.autosuspend=-1` no `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub`.
+### Ativar reconhecimento da digital
+Remover aplicações antes de começar:
+```shell
+sudo apt purge fprintd libpam-fprintd
+```
+Instalar as aplicações e iniciar o serviço:
+```shell
+sudo apt install fprintd libpam-fprintd && \
+sudo service fprintd restart
+```
+Reiniciar o computador.
+### Configurações de fechamento da tela
+- [https://fostips.com/lid-close-action-ubuntu-21-04-laptop/](https://fostips.com/lid-close-action-ubuntu-21-04-laptop/)
 ## X99 (Processador Intel Xeon)
 ### Parametros no boot
 Alguns parametros para adicionar no campo `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub` as instruções abaixo:
@@ -227,22 +242,6 @@ sudo add-apt-repository ppa:linuxuprising/apps
 sudo apt update
 sudo apt install tlpui
 ```
-### Desabilitar a suspensão da USB
-Adicionar o parametro `usbcore.autosuspend=-1` no `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub`.
-## DELL NOTEBOOK
-### Ativar reconhecimento da digital
-Remover aplicações antes de começar:
-```shell
-sudo apt purge fprintd libpam-fprintd
-```
-Instalar as aplicações e iniciar o serviço:
-```shell
-sudo apt install fprintd libpam-fprintd && \
-sudo service fprintd restart
-```
-Reiniciar o computador.
-### Configurações de fechamento da tela
-- [https://fostips.com/lid-close-action-ubuntu-21-04-laptop/](https://fostips.com/lid-close-action-ubuntu-21-04-laptop/)
 ## VERIFICAR HARDWARE
 ### Verificar Clock do CPU em tempo real pelo terminal
 Resumido:

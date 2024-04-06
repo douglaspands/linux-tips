@@ -159,6 +159,8 @@ sudo dkms add ./rtl88x2bu
 sudo dkms install rtl88x2bu/5.8.7.1
 ```
 > Fonte: [Wifi issues [SOLVED]](https://forums.linuxmint.com/viewtopic.php?t=392580)
+#### Problema: Desabilitar a suspensão da USB
+Adicionar o parametro `usbcore.autosuspend=-1` no `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub`.
 ### Audio
 #### Problema: Chiado na saida de som
 Acrescente `tsched=0` no parâmetro `load-module module-udev-detect` em `/etc/pulse/default.pa` (usando sudo):
@@ -186,8 +188,6 @@ sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.
 ```
 > Minha preferencia foi desativar a hibernação no Desktop.
 > Fonte: https://www.tecmint.com/disable-suspend-and-hibernation-in-linux/
-### Desabilitar a suspensão da USB
-Adicionar o parametro `usbcore.autosuspend=-1` no `GRUB_CMDLINE_LINUX_DEFAULT` do arquivo `/etc/default/grub`.
 ### Ativar reconhecimento da digital
 Remover aplicações antes de começar:
 ```shell

@@ -321,6 +321,21 @@ Caminho do hardware  Dispositivo  Classe         Descrição
 /0/10/0                           memory         8GiB SODIMM DDR3 Síncrono 1600 MHz (0,6 ns)
 /0/10/1                           memory         DIMMProject-Id-Version: lshwReport-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>PO-Revision-Date: 2013-04-07 17:30+0000Last-Translator: Neliton
 ```
+## GRUB
+### Dual Boot
+Para o Grub reconhecer o Microsoft Windows, é necessario executar os procedimentos:
+1. garantir que o `os-prober` esteja instalado
+```sh
+sudo apt install os-prober
+```
+2. Alterar o arquivo `/etc/default/grub` (como `sudo`) para incluir ou descomentar a seguinte variavel:
+```sh
+GRUB_DISABLE_OS_PROBER=false
+```
+3. Atualizar o Grub
+```sh
+sudo update-grub
+```
 ## GNOME
 ### Touchpad (tap-to-click) no GDM (Tela de Login)
 ```shell

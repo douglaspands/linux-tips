@@ -14,7 +14,7 @@ docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 ```
 
-## Adicionar autocomplete do MicroK8s no ZSH
+## Adicionar autocomplete do MicroK8S no ZSH
 ```sh
 alias kubectl="microk8s.kubectl"
 # use autocompletion

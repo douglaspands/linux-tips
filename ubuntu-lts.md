@@ -173,6 +173,14 @@ pulseaudio -k
 pulseaudio --start
 ```
 > Fonte: [ubuntu-20-04-com-chiado-no-som](https://plus.diolinux.com.br/t/ubuntu-20-04-com-chiado-no-som/35371)
+### Bluetooth
+#### Bluetooth USB sempre desligado (não tendo permissão para ligar)
+Descomentar os seguintes parametros no arquivo `/etc/bluetooth/input.conf` com `sudo`:
+```txt
+IdleTimeout=30
+UserspaceHID=true
+```
+Reiniciar o computador na sequencia.
 ### Hibernação
 **Desativar**
 ```bash

@@ -180,6 +180,11 @@ Descomentar os seguintes parametros no arquivo `/etc/bluetooth/input.conf` com `
 IdleTimeout=30
 UserspaceHID=true
 ```
+Editar o arquivo `/etc/udev/rules.d/10-local.rules` com `sudo` e adicionar as seguintes linhas:
+```txt
+# Set bluetooth power up
+ACTION=="add", KERNEL=="hci0", RUN+="/usr/bin/hciconfig %k up"
+```
 Reiniciar o computador na sequencia.
 ### Hibernação
 **Desativar**

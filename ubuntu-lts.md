@@ -1,6 +1,32 @@
 # UBUNTU LTS
 ___
 ## SOFTWARE
+### Instalar Gnome Software e Flatpak
+```sh
+sudo apt install -y flatpak gnome-software-plugin-flatpak && \
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+```
+Foi identificado um bug ao tentar abrir app flatpak através da loja, para corrigir foi necessario criar o arquivo `/etc/apparmor.d/bwrap` com o `sudo` tendo
+o seguinte conteudo:
+```txt
+abi <abi/4.0>,
+include <tunables/global>
+
+profile bwrap /usr/bin/bwrap flags=(unconfined) {
+  userns,
+
+  # Site-specific additions and overrides. See local/README for details.
+  include if exists <local/bwrap>
+}
+```
+Executar o eguinte comando:
+```sh
+sudo systemctl reload apparmor
+```
+Reiniciar a maquina na sequencia para garantir que tudo esteja funcionando corretamente.   
+   
+Fonte: [Can't run Processing flatpak: exit status 256](https://www.reddit.com/r/Ubuntu/comments/1cic144/cant_run_processing_flatpak_exit_status_256/?tl=pt-br)   
+Solução: [Apps don't launch from GNOME Software - Comment 5 for bug 2061728](https://bugs.launchpad.net/ubuntu/+source/gnome-software/+bug/2061728/comments/5)   
 ### Desinstalar aplicativo sem remover dependencias
 ```shell
 dpkg -r --force-depends foo

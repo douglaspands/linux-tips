@@ -2,6 +2,14 @@
 
 ## Comandos de apoio
 
+### kde
+
+#### Usar o Dolphin com root
+```sh
+sudo pacman -S kio-admin 
+```
+`alt + ctrl + shift + a` para abrir no modo root.
+
 ### pacman
 
 #### Upgrade

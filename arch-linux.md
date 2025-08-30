@@ -1,17 +1,29 @@
 # ARCH LINUX
 
-## AUR - Arch User Repository
+## Comandos de apoio
 
-### Yay - Gerenciador de repositorios AUR
+### Pacman
+
+#### Upgrade
 ```sh
-git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+sudo pacman -Syu
 ```
 
-### Comandos
+#### Autoremove
+```sh
+sudo pacman -Rs $(pacman -Qtdq) 
+```
 
 #### Clear cache
 ```sh
-yay -Sc
+sudo pacman -Sc
+```
+
+### Yay
+
+#### Upgrade
+```sh
+yay -Syu
 ```
 
 #### Autoremove
@@ -19,40 +31,19 @@ yay -Sc
 yay -Rs $(yay -Qtdq) 
 ```
 
-### Repositorios
-
-#### Fontes da Microsoft
+#### Clear cache
 ```sh
-yay -S --noconfirm --quiet --needed ttf-ms-fonts
+yay -Sc
 ```
 
-#### Google Chrome
-```sh
-yay -S --noconfirm --quiet --needed google-chrome
-```
+## Aplicações
 
-#### Visual Studio Code
-```sh
-yay -S --noconfirm --quiet --needed visual-studio-code-bin
-```
-
-## Pacman
-
-### Comandos
-
-#### Autoremove
-```sh
-sudo pacman -Rs $(pacman -Qtdq) 
-```
-
-### Aplicações
-
-#### Build essentials
+### Build essentials
 ```sh
 sudo pacman -Sy base-devel git curl less
 ```
 
-#### Docker + Compose
+### Docker + Compose
 ```sh
 sudo pacman -Sy docker docker-compose
 ```
@@ -61,7 +52,7 @@ Adicionar usuario ao grupo do Docker:
 sudo usermod -aG docker $USER
 ```
 
-#### Nvidia Container Toolkit
+### Nvidia Container Toolkit
 ```sh
 sudo pacman -Sy nvidia-container-toolkit
 ```
@@ -71,7 +62,27 @@ sudo nvidia-ctk runtime configure --runtime=docker && \
 sudo systemctl restart docker
 ```
 
-#### Terminator
+### Terminator
 ```sh
 sudo pacman -Sy terminator
+```
+
+### Yay - Gerenciador de repositorios AUR
+```sh
+git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+```
+
+### Fontes da Microsoft (AUR)
+```sh
+yay -S --noconfirm --quiet --needed ttf-ms-fonts
+```
+
+### Google Chrome (AUR)
+```sh
+yay -S --noconfirm --quiet --needed google-chrome
+```
+
+### Visual Studio Code (AUR)
+```sh
+yay -S --noconfirm --quiet --needed visual-studio-code-bin
 ```

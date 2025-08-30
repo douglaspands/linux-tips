@@ -2,7 +2,7 @@
 
 ## Comandos de apoio
 
-### Pacman
+### pacman
 
 #### Upgrade
 ```sh
@@ -19,7 +19,7 @@ sudo pacman -Rs $(pacman -Qtdq)
 sudo pacman -Sc
 ```
 
-### Yay
+### yay
 
 #### Upgrade
 ```sh
@@ -35,6 +35,39 @@ yay -Rs $(yay -Qtdq)
 ```sh
 yay -Sc
 ```
+
+### systemd-boot
+
+#### Listar kernels do boot
+```sh
+bootctl list 
+```
+Ouput:
+```txt
+         type: Boot Loader Specification Type #1 (.conf)
+        title: Arch Linux (linux)
+           id: 2025-08-27_04-38-50_linux.conf
+       source: /boot//loader/entries/2025-08-27_04-38-50_linux.conf (on the EFI>
+        linux: /boot//vmlinuz-linux
+       initrd: /boot//initramfs-linux.img
+      options: root=PARTUUID=26d26d66-c86e-4be0-b8c2-a0130f00273c zswap.enabled>
+
+         type: Boot Loader Specification Type #1 (.conf)
+        title: Arch Linux (linux-zen) (default) (selected)
+           id: 2025-08-27_04-38-50_linux-zen.conf
+       source: /boot//loader/entries/2025-08-27_04-38-50_linux-zen.conf (on the>
+        linux: /boot//vmlinuz-linux-zen
+       initrd: /boot//initramfs-linux-zen.img
+      options: root=PARTUUID=26d26d66-c86e-4be0-b8c2-a0130f00273c zswap.enabled>
+
+         type: Boot Loader Specification Type #1 (.conf)
+```
+
+#### Escolher o kernel default no boot
+```sh
+sudo bootctl set-default 2025-08-27_04-38-50_linux-zen.conf
+```
+> `2025-08-27_04-38-50_linux-zen.conf` id do kernel escolhido
 
 ## Aplicações
 

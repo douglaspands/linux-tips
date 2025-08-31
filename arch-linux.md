@@ -1,52 +1,57 @@
 # ARCH LINUX
 
-## Comandos de apoio
+## pacman
 
-### kde
-
-#### Usar o Dolphin com root
+### upgrade
 ```sh
-sudo pacman -S kio-admin 
-```
-`alt + ctrl + shift + a` para abrir no modo root.
-
-### pacman
-
-#### Upgrade
-```sh
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 ```
 
-#### Autoremove
+### autoremove
 ```sh
 sudo pacman -Rs $(pacman -Qtdq) 
 ```
 
-#### Clear cache
+### clear cache
 ```sh
-sudo pacman -Sc
+sudo pacman -Sc --noconfirm
 ```
 
-### yay
+## yay
 
-#### Upgrade
+### upgrade
 ```sh
-yay -Syu
+yay -Syu --noconfirm
 ```
 
-#### Autoremove
+### autoremove
 ```sh
 yay -Rs $(yay -Qtdq) 
 ```
 
-#### Clear cache
+### clear cache
 ```sh
-yay -Sc
+yay -Sc --noconfirm
 ```
 
-### systemd-boot
+## KDE
 
-#### Listar kernels do boot
+### Usar o Dolphin com o root
+```sh
+sudo pacman -S --noconfirm --needed kio-admin 
+```
+`alt + ctrl + shift + a` para abrir no modo root.
+> Apesar de ajudar, facilita o uso do super usuario, o que não é recomendado.
+
+### Montar `.iso` no Dolphin
+```sh
+sudo pacman -S --noconfirm --needed kio-fuse kio-extras
+```
+Clicar com o botão direito do mouse no `*.iso` e clicar em `montar`.
+
+## systemd-boot
+
+### Listar kernels do boot
 ```sh
 bootctl list 
 ```
@@ -71,22 +76,23 @@ Ouput:
          type: Boot Loader Specification Type #1 (.conf)
 ```
 
-#### Escolher o kernel default no boot
+### Escolher o kernel default no boot
 ```sh
 sudo bootctl set-default 2025-08-27_04-38-50_linux-zen.conf
 ```
 > `2025-08-27_04-38-50_linux-zen.conf` id do kernel escolhido
 
 ## Aplicações
+Apoio a instalação de aplicações essenciais (na minha opinião).
 
 ### Build essentials
 ```sh
-sudo pacman -Sy base-devel git curl less
+sudo pacman -Sy --noconfirm --needed base-devel git curl less openssl zlib xz tk zstd
 ```
 
 ### Docker + Compose
 ```sh
-sudo pacman -Sy docker docker-compose
+sudo pacman -Sy --noconfirm --needed docker docker-compose
 ```
 Adicionar usuario ao grupo do Docker:
 ```sh
@@ -95,7 +101,7 @@ sudo usermod -aG docker $USER
 
 ### Nvidia Container Toolkit
 ```sh
-sudo pacman -Sy nvidia-container-toolkit
+sudo pacman -Sy --noconfirm --needed nvidia-container-toolkit
 ```
 Configurar o Docker daemon:
 ```sh
@@ -105,7 +111,7 @@ sudo systemctl restart docker
 
 ### Terminator
 ```sh
-sudo pacman -Sy terminator
+sudo pacman -Sy --noconfirm --needed terminator
 ```
 
 ### Yay - Gerenciador de repositorios AUR
@@ -127,3 +133,11 @@ yay -S --noconfirm --quiet --needed google-chrome
 ```sh
 yay -S --noconfirm --quiet --needed visual-studio-code-bin
 ```
+
+### Opera (AUR)
+```sh
+yay -S --noconfirm --quiet --needed opera
+```
+> O **Opera** é o unico navegador que roda videos em fullhd no Netflix.  
+
+> Caso ocorra problemas para assistir videos nos streamings, o repositorio [fix-opera-linux-ffmpeg-widevine](https://github.com/Ld-Hagen/fix-opera-linux-ffmpeg-widevine) tem uma dica valiosa para destravar.

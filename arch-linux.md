@@ -41,7 +41,7 @@ yay -Sc --noconfirm
 sudo pacman -S --noconfirm --needed kio-admin 
 ```
 `alt + ctrl + shift + a` para abrir no modo root.
-> Apesar de ajudar, facilita o uso do super usuario, o que não é recomendado.
+> Apesar de ajudar, facilitar o uso do super usuario não é recomendado.
 
 ### Montar `.iso` no Dolphin
 ```sh

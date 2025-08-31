@@ -49,6 +49,12 @@ sudo pacman -S --noconfirm --needed kio-fuse kio-extras
 ```
 Clicar com o botão direito do mouse no `*.iso` e clicar em `montar`.
 
+### Firewall
+```sh
+sudo pacman -Sy --noconfirm --needed ufw 
+```
+> A funcionalidade fica desativada até a instalação do pacote. 
+
 ## systemd-boot
 
 ### Listar kernels do boot

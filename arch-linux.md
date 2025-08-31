@@ -2,7 +2,7 @@
 
 ## pacman
 
-### upgrade
+### upgrade em todos os pacotes
 ```sh
 sudo pacman -Syu --noconfirm
 ```
@@ -19,7 +19,7 @@ sudo pacman -Sc --noconfirm
 
 ## yay
 
-### upgrade
+### upgrade em todos os pacotes
 ```sh
 yay -Syu --noconfirm
 ```
@@ -51,7 +51,7 @@ Clicar com o botão direito do mouse no `*.iso` e clicar em `montar`.
 
 ### Firewall
 ```sh
-sudo pacman -Sy --noconfirm --needed ufw 
+sudo pacman -S --noconfirm --needed ufw 
 ```
 > A funcionalidade fica desativada até a instalação do pacote. 
 
@@ -93,12 +93,12 @@ Apoio a instalação de aplicações essenciais (na minha opinião).
 
 ### Build essentials
 ```sh
-sudo pacman -Sy --noconfirm --needed base-devel git curl less openssl zlib xz tk zstd
+sudo pacman -S --noconfirm --needed base-devel git curl less openssl zlib xz tk zstd
 ```
 
 ### Docker + Compose
 ```sh
-sudo pacman -Sy --noconfirm --needed docker docker-compose
+sudo pacman -S --noconfirm --needed docker docker-compose
 ```
 Adicionar usuario ao grupo do Docker:
 ```sh
@@ -107,7 +107,7 @@ sudo usermod -aG docker $USER
 
 ### Nvidia Container Toolkit
 ```sh
-sudo pacman -Sy --noconfirm --needed nvidia-container-toolkit
+sudo pacman -S --noconfirm --needed nvidia-container-toolkit
 ```
 Configurar o Docker daemon:
 ```sh
@@ -117,7 +117,7 @@ sudo systemctl restart docker
 
 ### Terminator
 ```sh
-sudo pacman -Sy --noconfirm --needed terminator
+sudo pacman -S --noconfirm --needed terminator
 ```
 
 ### Yay - Gerenciador de repositorios AUR

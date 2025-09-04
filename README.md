@@ -6,3 +6,4 @@
 - [Ubuntu LTS](https://github.com/douglaspands/linux-tips/blob/master/ubuntu-lts.md)
 - [Docker](https://github.com/douglaspands/linux-tips/blob/master/docker-k8s.md)
 - [Arch Linux](https://github.com/douglaspands/linux-tips/blob/master/arch-linux.md)
+- [Debian](https://github.com/douglaspands/linux-tips/blob/master/debian.md)

@@ -41,8 +41,9 @@ Instale as seguintes dependencias:
 ```sh
 sudo apt install libapr1 libaprutil1 libasound2 libglib2.0-0
 ```
+> Se alguma falhar, não tem problema, pois essas dependencias são requisitos da aplicação.
 
-Faça o download em: [BlackMagicDesign](https://www.blackmagicdesign.com/br/products/davinciresolve).
+Faça o download em: [BlackMagicDesign](https://www.blackmagicdesign.com/br/products/davinciresolve) e instale assim:
 
 ```sh
 unzip ./DaVinci_Resolve_20.1.1_Linux.zip

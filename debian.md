@@ -35,3 +35,29 @@ O navegador Opera (na data 04/09/2025) é o unico navegador que permite assistir
 Netflix no Linux. Porem, pode acontecer de dar erro no momento da inicialização do video.
 Para corrigir, existe um tutorial no repositorio [fix-opera-linux-ffmpeg-widevine](https://github.com/Ld-Hagen/fix-opera-linux-ffmpeg-widevine) onde contem o passo a passo necessario.
 
+
+## Davinci Resolve
+Instale as seguintes dependencias:
+```sh
+sudo apt install libapr1 libaprutil1 libasound2 libglib2.0-0
+```
+
+Faça o download em: [BlackMagicDesign](https://www.blackmagicdesign.com/br/products/davinciresolve).
+
+```sh
+unzip ./DaVinci_Resolve_20.1.1_Linux.zip
+chmod +x ./DaVinci_Resolve_20.1.1_Linux.run
+sudo SKIP_PACKAGE_CHECK=1 ./DaVinci_Resolve_20.1.1_Linux.run -i
+```
+Vai solicitar algumas ações, mas é do tipo `Next`, `next`....
+
+Assim que instalado, é necessario mover algumas libs do `Resolve` para funcionar:
+```sh
+cd /opt/resolve/libs
+sudo mkdir disabled-libraries
+sudo mv libglib* disabled-libraries
+sudo mv libgio* disabled-libraries
+sudo mv libgmodule* disabled-libraries
+```
+
+Feito isso, a aplicação vai funcionar corretamente.

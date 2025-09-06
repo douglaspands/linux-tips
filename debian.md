@@ -1,27 +1,34 @@
 # DEBIAN
 
-## Instalar driver da Nvidia
-Download: [Nvidia Drivers](https://www.nvidia.com/en-in/drivers/)   
-`NVIDIA-Linux-x86_64-580.82.07.run` é o driver mais recente.
-
+## Instalar driver da Nvidia (mais recente)
 Instalar as seguintes dependencias:
 ```sh
 sudo apt install -y linux-headers-amd64 build-essential
 ```
+Download: [Nvidia Drivers](https://www.nvidia.com/en-in/drivers/)   
+`NVIDIA-Linux-x86_64-580.82.07.run` é o driver mais recente.
 
-Editar o arquivo `/etc/modprobe.d/supergfxd.conf` com sudo:
-```txt
-blacklist nouveau
-alias nouveau off
-
-option nvidia-drm modeset=1
-```
-
-Assim que o download estiver concluido, executar os comandos como no exemplo abaixo:
+Assim que o download estiver concluido, executar os comandos:
 ```sh
 chmod +x NVIDIA-Linux-x86_64-580.82.07.run
 sudo ./NVIDIA-Linux-x86_64-580.82.07.run
 ```
+Vai ser solicitado algumas confirmações, elas variam de acordo com a versão, geramente o sugerido já atende (menos o `Abort Installation`).
+
+Editar o arquivo `/etc/default/grub` com o sudo e acrescentar o parametro `nvidia-drm.modeset=1`
+na variavel `GRUB_CMDLINE_LINUX`:
+```txt
+GRUB_CMDLINE_LINUX="nvidia-drm.modeset=1"
+```
+> Se já existir algum conteudo nessa variavel, dar um espaço e adicione na frente.
+Exemplo: `GRUB_CMDLINE_LINUX="quiet nvidia-drm.modeset=1"`
+
+Feito isso, executar o comando:
+```sh
+sudo update-grub
+```
+Após o termino, reiniciar a maquina.
+
 
 ## Opera - Correção HTML5 medias
 O navegador Opera (na data 04/09/2025) é o unico navegador que permite assistir videos em FullHD do 

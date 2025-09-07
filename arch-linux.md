@@ -147,3 +147,23 @@ yay -S --noconfirm --quiet --needed opera
 > O **Opera** é o unico navegador que roda videos em fullhd no Netflix.  
 
 > Caso ocorra problemas para assistir videos nos streamings, o repositorio [fix-opera-linux-ffmpeg-widevine](https://github.com/Ld-Hagen/fix-opera-linux-ffmpeg-widevine) tem uma dica valiosa para destravar.
+
+### Davinci Resolve
+Faça o download em: [BlackMagicDesign](https://www.blackmagicdesign.com/br/products/davinciresolve) e instale assim:
+```sh
+unzip ./DaVinci_Resolve_20.1.1_Linux.zip
+chmod +x ./DaVinci_Resolve_20.1.1_Linux.run
+sudo SKIP_PACKAGE_CHECK=1 ./DaVinci_Resolve_20.1.1_Linux.run -i
+```
+
+Vai solicitar algumas ações, mas é do tipo `Next`, `next`....
+Assim que instalado, é necessario mover algumas libs do `Resolve` para funcionar:
+```sh
+cd /opt/resolve/libs
+sudo mkdir disabled-libraries
+sudo mv libglib* disabled-libraries
+sudo mv libgio* disabled-libraries
+sudo mv libgmodule* disabled-libraries
+```
+
+Feito isso, a aplicação vai funcionar corretamente.

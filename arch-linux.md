@@ -92,12 +92,12 @@ sudo bootctl set-default 2025-08-27_04-38-50_linux-zen.conf
 Exemplo de montagem de uma partição no formato `NTFS` (compativel com o Windows) para todos os usuarios.
 Editar o arquivo `/etc/fstab` com o sudo:
 ```txt
-/dev/sda2  /mnt/backup  ntfs-3g  defaults,uid=1000,gid=1000,umask=000,windows_names  0  0
+/dev/sda2  /mnt/backup  ntfs-3g  rw,uid=1000,gid=1000,fmask=133,dmask=022,allow_other,big_writes  0  0
 ```
 - `/dev/sda2`: para identificar a partição é necessario usar o comando `sudo lsblk -f`;
 - `/mnt/backup`: o padrão é sempre montar na pasta `/mnt`. O nome `backup` foi minha escolha de nome, mas pode ser qualquer nome;
 - `ntfs-3g`: Aplicação que fará a montagem do tipo de file-system `NTFS`;
-- `defaults,uid=1000,gid=1000,umask=000,windows_names  0  0`: Essas são configurações de apoio a montagem do disco, para montar uma partição compativel com o Windows, esses parametros são necessarios;
+- `rw,uid=1000,gid=1000,fmask=133,dmask=022,allow_other,big_writes  0  0`: Essas são configurações de apoio a montagem do disco, para montar uma partição compativel com o Windows, esses parametros são necessarios (testado com a steam);
 
 
 ## Aplicações

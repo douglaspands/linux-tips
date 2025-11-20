@@ -55,6 +55,19 @@ sudo pacman -S --noconfirm --needed ufw
 ```
 > A funcionalidade fica desativada até a instalação do pacote. 
 
+### SDDM - Habilitar Touchpad Tap
+Editar ou criar arquivo `/etc/X11/xorg.conf.d/20-touchpad.conf` como `sudo` e adicionar:
+```sh
+Section "InputClass"
+    Identifier "libinput touchpad catchall"
+    MatchIsTouchpad "on"
+    MatchDevicePath "/dev/input/event*"
+    Driver "libinput"
+    Option "Tapping" "on"
+    Option "NaturalScrolling" "on"
+EndSection
+```
+
 ## systemd-boot
 
 ### Listar kernels do boot

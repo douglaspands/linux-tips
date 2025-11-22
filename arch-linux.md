@@ -123,7 +123,7 @@ Segundo vamos instalar o `XWayland` + driver Intel:
 sudo pacman -S --noconfirm xorg-xwayland xf86-video-intel
 ```
 
-Terceiro vamos instalar o driver na Nvidia na versão `470`:
+Terceiro vamos instalar o driver da Nvidia na versão `470`:
 ```sh
 yay -S --noconfirm nvidia-470xx-dkms nvidia-470xx-utils nvidia-470xx-settings lib32-nvidia-470xx-utils opencl-nvidia-470xx
 ```

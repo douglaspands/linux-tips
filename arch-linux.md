@@ -115,7 +115,7 @@ Editar o arquivo `/etc/fstab` com o sudo:
 ## NVIDIA PRIME
 Caso voce tenha um notebook com placa de video hibrida (Intel+Nvidia), é necessario seguir alguns passos para conseguir usar a Intel de baixo consumo e a NVidia nos apps desejados (Fonte: [[SOLVED] Nvidia GeForce 920M not working with driver nvidia-470xx-dkms#11](https://bbs.archlinux.org/viewtopic.php?id=271625)).
 
-Primeiro é necessario checar qual é o driver ideal para a sua placa de video [CodeNames](https://nouveau.freedesktop.org/CodeNames.html). No meu caso, a minha GPU é uma `Nvidia GeForce 920m`, então foi identificado que o melhor driver é o `470`.
+Primeiro é necessario checar qual é o driver ideal para a sua placa de video no link [CodeNames](https://nouveau.freedesktop.org/CodeNames.html). No meu caso, a minha GPU é uma `Nvidia GeForce 920m`, então foi identificado que o melhor driver é o `470`.
 > O driver `470` só esta disponivel via `AUR`, é importante verificar como instalar (`pacman` ou `yay`) o driver de acordo com a versão orientada.
 
 Segundo vamos instalar o `XWayland` + driver Intel:

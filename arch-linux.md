@@ -56,7 +56,7 @@ sudo pacman -S --noconfirm --needed ufw
 > A funcionalidade fica desativada até a instalação do pacote. 
 
 ### SDDM - Habilitar Touchpad Tap
-Editar ou criar arquivo `/etc/X11/xorg.conf.d/20-touchpad.conf` como `sudo` e adicionar:
+Editar ou criar o arquivo `/etc/X11/xorg.conf.d/20-touchpad.conf` como `sudo` e adicionar:
 ```sh
 Section "InputClass"
     Identifier "libinput touchpad catchall"
@@ -111,6 +111,43 @@ Editar o arquivo `/etc/fstab` com o sudo:
 - `/mnt/backup`: o padrão é sempre montar na pasta `/mnt`. O nome `backup` foi minha escolha de nome, mas pode ser qualquer nome;
 - `ntfs-3g`: Aplicação que fará a montagem do tipo de file-system `NTFS`;
 - `rw,uid=1000,gid=1000,fmask=133,dmask=022,allow_other,big_writes  0  0`: Essas são configurações de apoio a montagem do disco, para montar uma partição compativel com o Windows, esses parametros são necessarios (testado com a steam);
+
+## NVIDIA PRIME
+Caso voce tenha um notebook com placa de video hibrida (Intel+Nvidia), é necessario seguir alguns passos para conseguir usar a Intel de baixo consumo e a NVidia nos apps desejados (Fonte: [[SOLVED] Nvidia GeForce 920M not working with driver nvidia-470xx-dkms#11](https://bbs.archlinux.org/viewtopic.php?id=271625)).
+
+Primeiro é necessario checar qual é o driver ideal para a sua placa de video [CodeNames](https://nouveau.freedesktop.org/CodeNames.html). No meu caso, a minha GPU é uma `Nvidia GeForce 920m`, então foi identificado que o melhor driver é o `470`.
+> O driver `470` só esta disponivel via `AUR`, é importante verificar como instalar (`pacman` ou `yay`) o driver de acordo com a versão orientada.
+
+Segundo vamos instalar o `XWayland` + driver Intel:
+```sh
+sudo pacman -S --noconfirm xorg-xwayland xf86-video-intel
+```
+
+Terceiro vamos instalar o driver na Nvidia na versão `470`:
+```sh
+yay -S --noconfirm nvidia-470xx-dkms nvidia-470xx-utils nvidia-470xx-settings lib32-nvidia-470xx-utils opencl-nvidia-470xx
+```
+> O `nvidia-470xx-settings` precisa compilar algumas libs do `GTK`, levando um tempo consideravel para instalar. Precisa ter paciencia e ficar de olho quando pedir a senha.
+
+E por ultimo, instalar o `nvidia-prime`:
+```sh
+sudo pacman -S --noconfirm nvidia-prime
+```
+Assim que finalizado toda a instalação, reinicie a maquina.
+
+Para testar se deu certo, vamos executar o comando abaixo para verificar a placa primaria (seu resultado será semelhante):
+```sh
+glxinfo | grep "OpenGL renderer"
+# print: OpenGL renderer string: Mesa Intel(R) HD Graphics 5500 (BDW GT2) 
+```
+Vamos checar se usando o `nvidia-prime` vai printar a placa da NVidia (Seu resultado será semelhante):
+```sh
+prime-run glxinfo | grep "OpenGL renderer"
+# print: OpenGL renderer string: NVIDIA GeForce 920M/PCIe/SSE2
+```
+Sempre utilize o comando `prime-run` antes do nome do programa que deseja executar para direcionar para a GPU da NVidia.
+
+**Dica**: Se estiver fazendo uma instalação limpa do ArchLinux, na opção de escolher o driver de video, escolha o `Intel`. Assim que instalado, faça os passos acima.
 
 
 ## Aplicações

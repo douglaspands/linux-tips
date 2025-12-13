@@ -28,3 +28,9 @@ dnf check-update && sudo dnf install code
 sudo dnf install adw-gtk3-theme
 ``` 
 > Usar o Gnome-Tweaks para selecionar o tema para os aplicativos legados
+
+## Gnome Plugins
+
+### AppIndicator - Icone no Shell do Gnome (Legado)
+
+Url: [AppIndicator](https://extensions.gnome.org/extension/615/appindicator-support/)

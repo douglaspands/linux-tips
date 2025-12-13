@@ -6,7 +6,7 @@
 ```sh
 sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda
 ```
-> 
+> Adicionar repositorio RPM Fusion antes.
 
 ## Aplicações e Utilitarios
 

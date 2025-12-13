@@ -33,4 +33,8 @@ sudo dnf install adw-gtk3-theme
 
 ### AppIndicator - Icone no Shell do Gnome (Legado)
 
-Url: [AppIndicator](https://extensions.gnome.org/extension/615/appindicator-support/)
+Url: [appindicator-support](https://extensions.gnome.org/extension/615/appindicator-support/)
+
+### AlphabeticalAppGrid - Ordenação de apps por ordem alfabetica
+
+URL: [alphabetical-app-grid](https://extensions.gnome.org/extension/4269/alphabetical-app-grid/)

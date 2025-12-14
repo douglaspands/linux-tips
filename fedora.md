@@ -21,10 +21,7 @@ Microsoft Core Fontes:
 sudo dnf install curl cabextract xorg-x11-font-utils fontconfig
 ```
 ```sh
-curl -LO https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
-```
-```sh
-sudo rpm -ivh --nodigest --nofiledigest msttcore-fonts-installer-2.6-1.noarch.rpm
+sudo dnf install https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
 ```
 
 Monospace fontes:

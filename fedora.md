@@ -8,10 +8,6 @@ sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda
 ```
 > Adicionar repositorio RPM Fusion antes.
 
-### Intel + Nvidia Optimus
-
-> Especificado em cima da minha placa Nvidia 920M
-
 
 ## Aplicações e Utilitarios
 

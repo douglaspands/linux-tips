@@ -9,6 +9,46 @@ sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda
 > Adicionar repositorio RPM Fusion antes.
 
 
+## Customizações
+
+### Montar segundo disco permanentemente no formato NTFS
+Antes de começar, garanta que estejam instaladas as libs necessarias:
+```sh
+sudo dnf install ntfs-3g fuse
+```
+
+Capture o UUID do disco que deseja montar com o comando abaixo:
+```sh
+sudo lsblk -f
+```
+Vai ser apresentado algo assim:
+```sh
+NAME        FSTYPE FSVER LABEL  UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+sda                                                                                 
+├─sda1                                                                              
+└─sda2      ntfs                251729E57BF19D8E                      738,6G    21% /mnt/backup
+sdb                                                                                 
+├─sdb1      vfat   FAT32        D858-CCAE                             579,5M     3% /boot/efi
+├─sdb2      ext4   1.0          70525307-80fa-4466-834f-24b7636c2af0    1,2G    31% /boot
+└─sdb3      btrfs        fedora ee79817c-44b0-444d-8197-5e665a8d74db  414,6G     6% /home
+                                                                                    /
+zram0       swap   1     zram0  234c72bb-fa0f-4269-bd86-6496d1e405d6                [SWAP]
+nvme0n1                                                                             
+├─nvme0n1p1 vfat   FAT32        3096-DC7D                                           
+├─nvme0n1p2                                                                         
+├─nvme0n1p3 ntfs                B85698CC56988D2E                                    
+└─nvme0n1p4 ntfs                3896986196982204     
+``` 
+Disco que sera montado é o sda2 com o UUID `251729E57BF19D8E`.
+Editar o `/etc/fstab` com sudo usuario:
+```sh
+sudo nano /etc/fstab
+```
+Acrescentar uma linha no final com as seguintes infomrmações:
+```sh
+UUID=251729E57BF19D8E /mnt/backup  ntfs-3g  noacsrules,noatime,nofail,prealloc,sparse  0  0 
+```
+
 ## Aplicações e Utilitarios
 
 ### Instalar fontes

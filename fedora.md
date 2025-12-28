@@ -9,7 +9,7 @@ sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda
 > Adicionar repositorio RPM Fusion antes.
 
 
-## Customizações
+## Customizações e correções
 
 ### Montar segundo disco permanentemente no formato NTFS
 Antes de começar, garanta que estejam instaladas as libs necessarias:
@@ -49,6 +49,12 @@ Acrescentar uma linha no final com as seguintes infomrmações:
 UUID=251729E57BF19D8E /mnt/backup  ntfs-3g  noacsrules,noatime,nofail,prealloc,sparse  0  0 
 ```
 
+### Aplicativo nativo da camera (snapshot) não funciona
+Incluir no arquivo `~/.bashrc` o seguinte comando:
+```sh
+export GSK_RENDERER=gl
+```
+
 ## Aplicações e Utilitarios
 
 ### Instalar fontes
@@ -68,7 +74,6 @@ Monospace fontes:
 sudo dnf install fira-code-fonts
 sudo dnf install cascadia-code-fonts
 ```
-
 
 ### Instalar VSCode
 ```sh

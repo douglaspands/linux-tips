@@ -147,7 +147,7 @@ prime-run glxinfo | grep "OpenGL renderer"
 ```
 Sempre utilize o comando `prime-run` antes do nome do programa que deseja executar para direcionar para a GPU da NVidia.
 
-**Dica**: Se estiver fazendo uma instalação limpa do ArchLinux, na opção de escolher o driver de video, escolha o `Intel`. Assim que instalado, faça os passos acima.
+**Dica**: Se estiver fazendo uma instalação limpa do ArchLinux, na opção de escolher o driver de video, escolha o `all open source`. Assim que instalado, faça os passos acima.
 
 
 ## Instalar Servidor de Som (Erro na instalação do ArchLinux)

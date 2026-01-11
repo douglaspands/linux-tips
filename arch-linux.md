@@ -150,7 +150,7 @@ Sempre utilize o comando `prime-run` antes do nome do programa que deseja execut
 **Dica**: Se estiver fazendo uma instalação limpa do ArchLinux, na opção de escolher o driver de video, escolha o `Intel`. Assim que instalado, faça os passos acima.
 
 
-## Instalar Servidor de Som (Quando ocorrer erro na instalação do ArchLinux)
+## Instalar Servidor de Som (Erro na instalação do ArchLinux)
 Em algumas instalações, ocorreu um erro ao instalar os drivers de som via `archinstall`. Nesse caso, ao re-executar o `archinstall` não instalar o servidor de som.
 
 Assim que concluido a instalação e iniciar o ArchLinux, execute o seguinte comando para instalar o servidor de som:
@@ -164,6 +164,11 @@ Apoio a instalação de aplicações essenciais (na minha opinião).
 ### Build essentials
 ```sh
 sudo pacman -S --noconfirm --needed base-devel git curl less openssl zlib xz tk zstd
+```
+
+### Gestor de energia (KDE Plasma + Notebook)
+```sh
+sudo pacman -S --noconfirm --needed power-profiles-daemon
 ```
 
 ### Docker + Compose

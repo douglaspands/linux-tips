@@ -62,3 +62,42 @@ sudo mv libgmodule* disabled-libraries
 ```
 
 Feito isso, a aplicação vai funcionar corretamente.
+
+## Podman
+Instruções para a instalação e configuração correta no Debian (eu uso no WSL2).
+
+### Instalação
+```sh
+sudo apt install podman podman-compose -y
+```
+### Configurações Requeridas
+
+#### Rede
+Incluir a seguinte configuração no `~/.config/containers/containers.conf`:
+```sh
+[network]
+firewall_driver = "iptables"
+```
+
+#### Registry
+Incluir a seguinte configuração no `~/.config/containers/registries.conf`:
+```sh
+unqualified-search-registries = ["docker.io", "quay.io", "ghcr.io"]
+```
+
+#### Permissões
+Executar os seguintes comandos:
+```sh
+sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 $USER
+sudo loginctl enable-linger $USER
+```
+
+#### Extras
+Adicionar as seguintes conigurações no shell (`.zshrc` ou `.bashrc`):
+```sh
+# Podman
+export PODMAN_COMPOSE_WARNING_LOGS=false
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+```
+
+Aconselho reiniciar a maquina (no WSL2 executar no PowerShell: `wsl --shutdown`)
